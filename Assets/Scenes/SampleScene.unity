@@ -363,7 +363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &662088058
 GameObject:
@@ -476,6 +476,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087920b1c1844d04b899d0618e3460eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EffectSounds:
+  - {fileID: 8300000, guid: 8c59ac583614df148834ae95ec71eda0, type: 3}
+  - {fileID: 8300000, guid: 5245ce5f8b8339d4cad431a60a8edcb4, type: 3}
+  - {fileID: 8300000, guid: 63f15c87d415b26459b707ce7510dafa, type: 3}
 --- !u!212 &740587861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -691,6 +695,10 @@ MonoBehaviour:
   GameOverSound: {fileID: 8300000, guid: a1980a6b284f70d4eb927f2f33497274, type: 3}
   GetPoint: {fileID: 8300000, guid: 63f15c87d415b26459b707ce7510dafa, type: 3}
   SocreText: {fileID: 212440838}
+  ArrowPrefab: {fileID: 157275892678102194, guid: 74089494337c406428a8d1de0f90156f,
+    type: 3}
+  CatfoodPrefab: {fileID: 2194586166112658765, guid: 475c3f4f90d018248bdda17d1e1ba0e0,
+    type: 3}
 --- !u!4 &758508088
 Transform:
   m_ObjectHideFlags: 0
@@ -703,7 +711,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &758508089
 AudioSource:
@@ -801,53 +809,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1039627631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1039627632}
-  - component: {fileID: 1039627633}
-  m_Layer: 0
-  m_Name: ArrowGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1039627632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039627631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1039627633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039627631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a205a8822ea120e4888f790ea557a212, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 157275892678102194, guid: 74089494337c406428a8d1de0f90156f,
-    type: 3}
-  span: 0.5
-  delta: 0
 --- !u!1 &1063588989
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +895,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Settings.lighting
-  serializedVersion: 2
+  serializedVersion: 3
   m_GIWorkflowMode: 1
   m_EnableBakedLightmaps: 0
   m_EnableRealtimeLightmaps: 0
@@ -956,7 +917,7 @@ LightingSettings:
   m_MixedBakeMode: 2
   m_LightmapsBakeMode: 1
   m_FilterMode: 1
-  m_LightmapParameters: {fileID: 0}
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
   m_ExportTrainingData: 0
   m_TrainingDataDestination: TrainingData
   m_RealtimeResolution: 2
@@ -973,7 +934,7 @@ LightingSettings:
   m_PVREnvironmentReferencePointCount: 2048
   m_LightProbeSampleCountMultiplier: 4
   m_PVRBounces: 2
-  m_PVRRussianRouletteStartBounce: 2
+  m_PVRMinBounces: 1
   m_PVREnvironmentMIS: 0
   m_PVRFilteringMode: 2
   m_PVRDenoiserTypeDirect: 0
@@ -1282,6 +1243,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1662784442
 Canvas:
   m_ObjectHideFlags: 0
@@ -1321,7 +1283,7 @@ RectTransform:
   - {fileID: 1714924115}
   - {fileID: 2084320381}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1381,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1588,6 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

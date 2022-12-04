@@ -1,15 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class CatFood : MonoBehaviour
 {
-    private GameObject gameManager;
-
     // Start is called before the first frame update
     void Start()
     {
-        this.gameManager = GameObject.Find("GameManager");
+        Destroy(gameObject, 3);
     }
 
     // Update is called once per frame
@@ -17,9 +15,8 @@ public class Arrow : MonoBehaviour
     {
         if (transform.position.y < -5.0f)
         {
-            gameManager.GetComponent<GameManager>().IncreasePonit();
-            Destroy(gameObject);            
-        }       
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

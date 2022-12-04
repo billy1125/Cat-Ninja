@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject hpUI;    
+    private GameObject hpUI;    
     public GameObject GameOverUI;
-    public int HealthAmount = 10;
+    public float HealthAmount = 10.0f;
     public int PointAmount = 0;
 
     public GameObject Player;
@@ -20,11 +20,16 @@ public class GameManager : MonoBehaviour
 
     public Text SocreText;
 
+    public GameObject ArrowPrefab;
+    public GameObject CatfoodPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
         this.hpUI = GameObject.Find("HP");
         ASaudio = GetComponent<AudioSource>();
+        InvokeRepeating("GenerateArrow", 0, 1);
+        InvokeRepeating("GenerateCatfood", 5, 5);
     }
 
     // Update is called once per frame
@@ -33,20 +38,31 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void decreaseHP()
+    void GenerateArrow()
     {
-        this.hpUI.GetComponent<Image>().fillAmount -= 0.1f;
-        this.HealthAmount -= 1;
-        this.ASaudio.clip = HurtSound;
+        float px = Random.Range(-6.0f, 7.0f);
+        Instantiate(ArrowPrefab, new Vector3(px, 7, 0), Quaternion.identity);
+    }
 
-        if (HealthAmount == 0)
+    void GenerateCatfood()
+    {
+        float px = Random.Range(-6.0f, 7.0f);
+        Instantiate(CatfoodPrefab, new Vector3(px, 7, 0), Quaternion.identity);
+    }
+
+    public void ChangeHP(float _number)
+    {
+        if (this.HealthAmount != 10.0f)
+        {
+            this.hpUI.GetComponent<Image>().fillAmount += _number;
+            this.HealthAmount += _number * 10.0f;        
+        }
+
+        if (this.HealthAmount == 0)
         {
             ShowGameOver();
             Player.SetActive(false);
-            this.ASaudio.clip = GameOverSound;
         }
-
-        this.ASaudio.Play();
     }
 
     private void ShowGameOver()
